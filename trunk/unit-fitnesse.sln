@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unit-fitnesse", "unit-fitnesse.vcproj", "{E9A1C446-17C9-45E1-AB6E-CBD982A61C33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9A1C446-17C9-45E1-AB6E-CBD982A61C33}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E9A1C446-17C9-45E1-AB6E-CBD982A61C33}.Debug|Win32.Build.0 = Debug|Win32
+		{E9A1C446-17C9-45E1-AB6E-CBD982A61C33}.Release|Win32.ActiveCfg = Release|Win32
+		{E9A1C446-17C9-45E1-AB6E-CBD982A61C33}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
