@@ -113,7 +113,7 @@ private:
    */
    std::string getLine(std::stringstream &stream)
 	{
-		const int MAX_LINE= 256;
+		const int MAX_LINE= 1024;
 		char line[MAX_LINE];
 		stream.getline(line,MAX_LINE);
 		return std::string (line);
