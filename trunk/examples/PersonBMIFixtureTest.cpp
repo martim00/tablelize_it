@@ -10,7 +10,15 @@
 #include <igloo/igloo.h>
 using namespace igloo;
 
-//1° is necessary to create your class Fixture
+/*
+ *this is the simplest example we can imagine where the method that calculates 
+ * the body mass index of the object person is tested with various data
+ *
+ * NOTE: The data tables created in text files for now need two empty lines 
+ * at the end or between each table, this is a bug that will be corrected.
+ */
+
+//1° is necessary to create your Fixture class 
 class PersonBMIFixtureTest : public Fixture
 {
 	//2° the execute method you will test all the data in table
@@ -32,9 +40,18 @@ class PersonBMIFixtureTest : public Fixture
 //5° it is not necessary here, this one just because I'm using the test framework igloo this example 
 Context(Examples)
 {
-	Spec(PersonBMI)
+	Spec(PersonBMI_LoadingDataFromFile)//data can be read from a text file
 	{
+		//LoadingDataFromFile method the tests are run with all the data contained in the file
 		PersonBMIFixtureTest().LoadingDataFromFile("examples/PersonBMIContents.txt");	
+	}
+
+	Spec(PersonBMI_LoadingData)//or passed as parameter
+	{
+		//LoadingData method the tests are run with all data passed as parameter
+		PersonBMIFixtureTest().LoadingData("|BMI|\n"
+			                                "|height|weight|expectedResult|\n"
+													  "|1.63|62|23.33|\n\n");	
 	}
 };
 
