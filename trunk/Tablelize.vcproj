@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="unit-fitnesse"
+	Name="Tablelize"
 	ProjectGUID="{E9A1C446-17C9-45E1-AB6E-CBD982A61C33}"
-	RootNamespace="unitfitnesse"
+	RootNamespace="Tablelize"
 	TargetFrameworkVersion="196613"
 	>
 	<Platforms>
