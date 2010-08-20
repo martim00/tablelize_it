@@ -1,5 +1,5 @@
 #ifndef INCLUDED_FIXTURE_H
-#include "..\Fixture.h"
+#include "..\src\Fixture.h"
 #endif //INCLUDED_FIXTURE_H
 
 #ifndef INCLUDED_PERSON_H

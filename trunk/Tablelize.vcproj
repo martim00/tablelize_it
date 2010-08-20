@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="igloo"
+				AdditionalIncludeDirectories="igloo;src"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -163,7 +163,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\main.cpp"
+				RelativePath=".\src\main.cpp"
 				>
 			</File>
 		</Filter>
@@ -173,23 +173,23 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Fixture.h"
+				RelativePath=".\src\Fixture.h"
 				>
 			</File>
 			<File
-				RelativePath=".\FixtureGlossary.h"
+				RelativePath=".\src\FixtureGlossary.h"
 				>
 			</File>
 			<File
-				RelativePath=".\FluentInterfaceHelper.h"
+				RelativePath=".\src\FluentInterfaceHelper.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Table.h"
+				RelativePath=".\src\Table.h"
 				>
 			</File>
 			<File
-				RelativePath=".\TableParser.h"
+				RelativePath=".\src\TableParser.h"
 				>
 			</File>
 		</Filter>

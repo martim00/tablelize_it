@@ -1,7 +1,7 @@
 #include <igloo/igloo.h>
 using namespace igloo;
 
-#include "..\TableParser.h"
+#include "..\src\TableParser.h"
 
 Context(TableParserTest)
 {

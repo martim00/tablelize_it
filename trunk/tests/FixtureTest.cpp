@@ -1,8 +1,8 @@
 #include <igloo/igloo.h>
 using namespace igloo;
 
-#include "..\Fixture.h"
-#include "..\TableParser.h"
+#include "..\src\Fixture.h"
+#include "..\src\TableParser.h"
 
 struct SimpleFixture : public Fixture
 {
