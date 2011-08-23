@@ -8,13 +8,10 @@
 #include "TableParser.h"
 #include "FixtureGlossary.h"
 
-//comit test
-
 class Fixture
 {
-public:	
-
-   ~Fixture()
+public:
+   virtual ~Fixture()
    {
       TableIterator it= FirstTable();
       for (; it != LastTable(); it++)
@@ -29,8 +26,6 @@ public:
 
 	void LoadingDataFromFile(const std::string &fileName)
 	{  		 
-		//table= TableParser().LoadTableFromFile(fileName);
-
       tables= TableParser().LoadTablesFromFile(fileName);
 	   execute();
 	}   
@@ -74,7 +69,7 @@ public:
    {
       size_t count= tables.count(tableName);
       if (count == 0)
-         throw std::runtime_error("cant find a table with name " + tableName);
+         throw std::runtime_error("cant find a table with name " + tableName + "\nMaybe you forget to put two empty lines in the end of file.");
 
       if (count > 1)
          throw std::runtime_error("found more than one table with name " + tableName + ". Maybe you want to see the GetTableWithArg method");
