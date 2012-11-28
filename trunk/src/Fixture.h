@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <set>
 #include "Table.h"
 #include "TableParser.h"
 #include "FixtureGlossary.h"
@@ -30,8 +31,9 @@ public:
 	   execute();
 	}   
 
+
+
    virtual void execute()= 0;
-   
 
    template <class T>
    T GetCellAs(const std::string tableName, const std::string field, int row)
@@ -114,12 +116,31 @@ public:
    TableIterator LastTable()
    {
       return tables.end();
+   }   
+
+   std::vector<Table*> GetTablesInOrder()
+   {
+      struct comparer 
+      {
+         bool operator()(Table* t1, Table* t2) const
+         {
+            return t1->GetPositionInFile() < t2->GetPositionInFile();
+         }
+      };
+
+      std::set<Table*, comparer> tablesInOrder;
+
+      TableIterator it= FirstTable();
+      for (; it != LastTable(); it++)
+      {
+         tablesInOrder.insert(it->second);
+      }
+
+      return std::vector<Table*>(tablesInOrder.begin(), tablesInOrder.end());
    }
 
 protected:
    std::multimap<std::string, Table*> tables;
-   //std::vector<Table*> tables;
-   //Table table;
    std::vector<std::string> fields;
 };
 

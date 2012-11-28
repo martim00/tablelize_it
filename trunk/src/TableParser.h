@@ -53,29 +53,14 @@ public:
       return table;
    }
 
-	/**
-	*  Loads a table from a file
-	*  @return Table
-	*  @param  const std::string & fileName
-	*/
-	Table *LoadTableFromFile(const std::string &fileName)
-	{
-		std::string buffer;
-		std::ifstream arq(fileName.c_str());
-      if (arq.fail())
-         throw std::runtime_error("Cant read the table file " +  fileName);
-		
-		std::getline(arq, buffer, '\0');
-		arq.close();
-		return LoadTable(buffer);
-	}
 
 
-   std::multimap<std::string, Table*> LoadTables(const std::string &contents)
+   std::multimap<std::string, Table*> LoadTables(const std::string &contents, const std::string &originFile="")
    {
       std::multimap<std::string, Table*> tables;
       std::stringstream ss(contents);      
       std::string line, tableContents;
+      unsigned int order = 0;
 
       while (std::getline(ss, line, '\n'))
       {
@@ -85,11 +70,16 @@ public:
 
          } else if (!tableContents.empty()) {
             Table *loadedTable= LoadTable(tableContents);
-            //tables[loadedTable->TableName()]= loadedTable;
+            loadedTable->SetPositionInFile(order++);
+            loadedTable->SetOriginFile(originFile);
             tables.insert(std::pair<std::string, Table*>(loadedTable->TableName(), loadedTable));
             tableContents.clear();
          }
       }
+
+      if (!contents.empty() && tables.empty())
+         throw std::runtime_error("There are contents to read but we cant parse a table. Maybe you forgot to put two empty lines at the end of the file");
+
       return tables;
    }
 
@@ -102,7 +92,7 @@ public:
 
       std::getline(arq, buffer, '\0');
       arq.close();
-      return LoadTables(buffer);
+      return LoadTables(buffer, fileName);
    }
 
 private:
