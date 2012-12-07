@@ -35,4 +35,8 @@ public class Table {
 		rows.add(row);
 	}
 
+	public Object rowsCount() {
+		return rows.size();
+	}
+
 }

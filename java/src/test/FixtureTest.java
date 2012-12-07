@@ -19,7 +19,7 @@ public class FixtureTest {
 	}
 
 	@Test
-	public void testShouldReadExampleFromString() {
+	public void testShouldReadExampleFromString() throws Exception {
 		
 		SimpleFixture fixture = new SimpleFixture();
 		

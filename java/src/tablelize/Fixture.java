@@ -17,17 +17,15 @@ public abstract class Fixture {
 		execute();
 	}
 	
-	Table *GetTable(const std::string &tableName)
+	public Table GetTable(String tableName) throws Exception
 	{
-		size_t count= tables.count(tableName);
-		if (count == 0)
-			throw std::runtime_error("cant find a table with name " + tableName + "\nMaybe you forget to put two empty lines in the end of file.");
-
-		if (count > 1)
-			throw std::runtime_error("found more than one table with name " + tableName + ". Maybe you want to see the GetTableWithArg method");
-
-		return GetTableRangeWithName(tableName).first->second;
+		ArrayList<Table> tablesWithName = tables.get(tableName);
+		if (tablesWithName.isEmpty())
+			throw new Exception("cant find a table with name " + tableName + "\nMaybe you forget to put two empty lines in the end of file.");
+		
+		if (tablesWithName.size() > 1)
+			throw new Exception("found more than one table with name " + tableName + ". Maybe you want to see the GetTableWithArg method");
+		
+		return tablesWithName.get(0);
 	}  
-
-
 }
