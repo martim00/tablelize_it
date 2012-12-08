@@ -35,7 +35,7 @@ public class Table {
 		rows.add(row);
 	}
 
-	public Object rowsCount() {
+	public int rowsCount() {
 		return rows.size();
 	}
 
@@ -47,6 +47,12 @@ public class Table {
 		if (argIndex >= args.size())
 			throw new Exception("cant find a table arg at " + argIndex);
 		return args.get(argIndex);
+	}
+
+	public int fieldsCount() {
+		if (rows.isEmpty()) 
+			return 0;
+		else return rows.get(0).getFieldsCount();
 	}
 
 }

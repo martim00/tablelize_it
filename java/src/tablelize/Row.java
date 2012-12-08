@@ -14,5 +14,9 @@ public class Row {
 	public String getFieldValue(String fieldName) {
 		return this.row.get(fieldName);
 	}
+	
+	public int getFieldsCount() {
+		return this.row.size();
+	}
 
 }

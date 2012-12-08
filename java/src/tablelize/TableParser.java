@@ -1,5 +1,10 @@
 package tablelize;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -7,6 +12,25 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 public class TableParser {
+	
+	public Table LoadTable(String tableContents) {
+
+		Scanner scanner = new Scanner(tableContents);
+
+		Table table = this.parseTableName(scanner.nextLine());
+		String header = scanner.nextLine();
+		List<String> fields = this.tokenize(header, "\\|");
+
+		while (scanner.hasNextLine()) {
+			String line = scanner.nextLine();
+			if (line.isEmpty()) continue;
+
+			List<String> lineParams = this.tokenize(line, "\\|");
+			this.addTableRow(table, fields, lineParams);
+		}
+
+		return table;
+	}
 
 	public Hashtable<String, ArrayList<Table>> LoadTables(String contents, String originFile) throws Exception {
 
@@ -53,7 +77,7 @@ public class TableParser {
 	 *  @param  std::string content
 	 *  @param  char separator
 	 */
-	List<String> tokenize(String content, String separator)
+	private List<String> tokenize(String content, String separator)
 	{
 		String[] tokens = content.split(separator);
 		ArrayList<String> tokensAsList = new ArrayList<String>(Arrays.asList(tokens));
@@ -110,24 +134,9 @@ public class TableParser {
 		table.addRow(row);
 	}
 
-	private Table LoadTable(String tableContents) {
-
-		Scanner scanner = new Scanner(tableContents);
-
-		Table table = this.parseTableName(scanner.nextLine());
-		String header = scanner.nextLine();
-		List<String> fields = this.tokenize(header, "\\|");
-
-		while (scanner.hasNextLine()) {
-			String line = scanner.nextLine();
-			if (line.isEmpty()) continue;
-
-			List<String> lineParams = this.tokenize(line, "\\|");
-			this.addTableRow(table, fields, lineParams);
-		}
-
-		return table;
-
+	public Hashtable<String, ArrayList<Table>> LoadTablesFromFile(String filename) throws Exception {
+		String content = new Scanner( new File(filename) ).useDelimiter("\\A").next();
+		return LoadTables(content, filename);
 	}
 
 }
