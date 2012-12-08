@@ -32,7 +32,7 @@ public class TableParser {
 				
 				String tableName = loadedTable.tableName();
 				
-				if (!tables.contains(tableName))
+				if (!tables.containsKey(tableName))
 					tables.put(tableName, new ArrayList<Table>());
 				
 				tables.get(tableName).add(loadedTable);
@@ -75,9 +75,10 @@ public class TableParser {
 	private void pushTableArgs( List<String> fields, Table table ) 
 	{
 		if (fields.size() < 2) return;
-
-		for (String field : fields) {
-			table.pushTableArg(field);
+		
+		for (int i = 1; i < fields.size(); i++) {
+			
+			table.pushTableArg(fields.get(i));
 		}
 	}
 

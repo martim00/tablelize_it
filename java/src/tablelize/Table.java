@@ -39,4 +39,14 @@ public class Table {
 		return rows.size();
 	}
 
+	public String getCell(String column, int row) {
+		return this.rows.get(row).getFieldValue(column);
+	}
+
+	public String getTableArgAt(int argIndex) throws Exception {
+		if (argIndex >= args.size())
+			throw new Exception("cant find a table arg at " + argIndex);
+		return args.get(argIndex);
+	}
+
 }

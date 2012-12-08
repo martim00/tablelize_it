@@ -10,5 +10,9 @@ public class Row {
 	public void addField(String fieldName, String fieldValue) {
 		this.row.put(fieldName, fieldValue);
 	}
+	
+	public String getFieldValue(String fieldName) {
+		return this.row.get(fieldName);
+	}
 
 }
