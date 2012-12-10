@@ -27,8 +27,6 @@ public class TableParserTest {
 	public void testParserFromFile() throws Exception
 	{		
 		TableParser parser = new TableParser();		
-		String file = new File(".").getCanonicalPath();
-		System.out.println(file);
 		Hashtable<String, ArrayList<Table>> tables = parser.LoadTablesFromFile("src/test/TableParserTestContents.txt");
 		
 		assertEquals(1, tables.size());

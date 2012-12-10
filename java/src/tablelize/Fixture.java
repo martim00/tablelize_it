@@ -9,7 +9,7 @@ public abstract class Fixture {
 
 	private Hashtable<String, ArrayList<Table>> tables = new Hashtable<String, ArrayList<Table>>();
 
-	public abstract void execute();
+	public abstract void execute() throws Exception;
 
 	public void LoadingData(String data) throws Exception {
 
@@ -18,6 +18,14 @@ public abstract class Fixture {
 		tables = parser.LoadTables(data, "");
 		execute();
 	}
+	
+	public void LoadingDataFromFile(String fileName) throws Exception
+	{  		 
+		TableParser parser = new TableParser();
+		tables= parser.LoadTablesFromFile(fileName);
+		execute();
+	}   
+
 
 	public Table GetTable(String tableName) throws Exception
 	{
