@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Configuration of the Ant build system to generate a Jar file --> 
+<project name="tablelize_it" default="junit">
+
+	<property name="src.dir"     value="src"/>
+	<property name="build.dir"   value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir"     value="${build.dir}/jar"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="test.dir" value="src/test"/>
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar"/>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+	</target>
+
+	<target name="jar" depends="compile">
+		<mkdir dir="${jar.dir}"/>
+		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}"/>
+	</target>
+
+	<target name="junit" depends="jar">
+		<!--		<junit printsummary="yes">
+			<classpath>
+				<path refid="classpath"/>
+			</classpath>
+
+			<batchtest fork="yes">
+				<fileset dir="${test.dir}" includes="*Test.java"/>
+			</batchtest>
+		</junit>-->
+		<junit printsummary="yes" >
+			<formatter type="xml"/>
+
+			<classpath> 
+				<path refid="classpath"/>
+				<path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
+				<path location="${classes.dir}/test"/>
+			</classpath>
+			
+
+			<batchtest >
+				<fileset dir="${test.dir}">
+					<include name="**/*Test*.java"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	
+
+
+  
+</project>
