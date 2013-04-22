@@ -39,10 +39,22 @@ public class Table {
 		return rows.size();
 	}
 
-	public String getCell(String column, int row) {
+	
+	/**
+	 * Returns the cell table by column and row 
+	 * @param column the column name
+	 * @param row the row index
+	 * @return String cell content
+	 * @throws Exception if the column name passed does not exist or if the row index is out of bounds 
+	 */
+	public String getCell(String column, int row) throws Exception {		
+		
+		if (row >= this.rows.size() || row < 0)
+			throw new Exception("the row index passed is out of range"); // TODO: create exception for this
+		
 		return this.rows.get(row).getFieldValue(column);
 	}
-
+	
 	public String getTableArgAt(int argIndex) throws Exception {
 		if (argIndex >= args.size())
 			throw new Exception("cant find a table arg at " + argIndex);

@@ -11,27 +11,31 @@ public abstract class Fixture {
 
 	public abstract void execute() throws Exception;
 
-	public void LoadingData(String data) throws Exception {
-
+	public void loadData(String data) throws Exception 
+	{
 		TableParser parser = new TableParser();
-
 		tables = parser.LoadTables(data, "");
 		execute();
 	}
 	
-	public void LoadingDataFromFile(String fileName) throws Exception
-	{  		 
-		TableParser parser = new TableParser();
-		tables= parser.LoadTablesFromFile(fileName);
+	public void loadDataFromFile(String fileName) throws Exception
+	{  	
+		System.out.println("loading file: " + fileName);
+		TableParser parser = new TableParser();		
+		tables= parser.LoadTablesFromFile(fileName);		
 		execute();
 	}   
+	
+	public boolean hasTable(String tableName) {
+		return tables.containsKey(tableName);
+	}
 
-
-	public Table GetTable(String tableName) throws Exception
+	public Table getTable(String tableName) throws Exception
 	{
 		ArrayList<Table> tablesWithName = tables.get(tableName);
+		
 		if (tablesWithName.isEmpty())
-			throw new Exception("cant find a table with name " + tableName + "\nMaybe you forget to put two empty lines in the end of file.");
+			throw new Exception("cant find a table with name " + tableName);
 
 		if (tablesWithName.size() > 1)
 			throw new Exception("found more than one table with name " + tableName + ". Maybe you want to see the GetTableWithArg method");
@@ -39,23 +43,25 @@ public abstract class Fixture {
 		return tablesWithName.get(0);
 	}  
 
-	public int tablesCount() {
+	public int tablesCount() 
+	{
 		int tableCount = 0;
 		for (Map.Entry<String, ArrayList<Table>> entry : tables.entrySet()) {
 			tableCount+= entry.getValue().size();
 		}	
 		return tableCount;
 	}
-	public List<Table> getTablesWithName(String tableName) throws Exception {
-
+	
+	public List<Table> getTablesWithName(String tableName) throws Exception 
+	{
 		if (!this.tables.containsKey(tableName))
 			throw new Exception("cant find a table with this name -> " + tableName);
 
 		return this.tables.get(tableName);
 	}
 	
-	public Table getTableWithArg(String tableName, int argIndex, String argValue) throws Exception {
-		
+	public Table getTableWithArg(String tableName, int argIndex, String argValue) throws Exception 
+	{
 		List<Table> tablesWithName = getTablesWithName(tableName);
 		
 		for (Table table : tablesWithName) {
@@ -65,23 +71,5 @@ public abstract class Fixture {
 		}
 		
 		throw new Exception("cant find a table with name " + tableName + "and arg at " + argIndex + "with value " + argValue );
-		
-//		TableRange tables= GetTableRangeWithName(tableName);
-//		TableIterator it= tables.first;     
-//
-//		for (; it != tables.second; it++)
-//		{
-//			std::string arg= (*it).second->GetTableArgAt(argIndex);
-//			if (!arg.compare(argValue))
-//			{
-//				return it->second;
-//			}
-//		}
-//
-//		std::stringstream ss;
-//		ss << "cant find a table with name " << tableName << "and arg at " << argIndex << "with value " << argValue << std::endl;
-//		throw std::runtime_error(ss.str());
-//
-//		return null;
 	}
 }

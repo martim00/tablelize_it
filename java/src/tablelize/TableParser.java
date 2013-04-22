@@ -39,7 +39,7 @@ public class TableParser {
 		int order = 0;
 		String tableContents = new String();		
 		Scanner scanner =  new Scanner(contents);
-		while (scanner.hasNextLine()) {
+		do {
 			//process each line in some way
 			String line = scanner.nextLine();
 
@@ -48,7 +48,9 @@ public class TableParser {
 				tableContents+= line;
 				tableContents+= "\n";
 
-			} else if (!tableContents.isEmpty()) {
+			} 
+			
+			if (!tableContents.isEmpty() && (line.isEmpty() || !scanner.hasNextLine())) {
 
 				Table loadedTable = LoadTable(tableContents);
 				loadedTable.setPositionInFile(order++);
@@ -62,10 +64,7 @@ public class TableParser {
 				tables.get(tableName).add(loadedTable);
 				tableContents = "";
 			}
-		}
-
-		if (!contents.isEmpty() && tables.isEmpty())
-			throw new Exception("There are contents to read but we cant parse a table. Maybe you forgot to put two empty lines at the end of the file");
+		} while (scanner.hasNextLine());
 
 		return tables;
 	}
@@ -135,7 +134,7 @@ public class TableParser {
 	}
 
 	public Hashtable<String, ArrayList<Table>> LoadTablesFromFile(String filename) throws Exception {
-		String content = new Scanner( new File(filename) ).useDelimiter("\\A").next();
+		String content = new Scanner( new File(filename) ).useDelimiter("\\Z").next();
 		return LoadTables(content, filename);
 	}
 

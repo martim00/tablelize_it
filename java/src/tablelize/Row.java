@@ -11,7 +11,10 @@ public class Row {
 		this.row.put(fieldName, fieldValue);
 	}
 	
-	public String getFieldValue(String fieldName) {
+	public String getFieldValue(String fieldName) throws Exception {
+		if (!this.row.containsKey(fieldName))
+			throw new Exception("cant find a column with name: " + fieldName);
+			
 		return this.row.get(fieldName);
 	}
 	
