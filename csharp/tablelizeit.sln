@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TablelizeIt", "TablelizeIt\TablelizeIt.csproj", "{F2885525-BE54-40D5-A28D-C46E3FCED1BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TablelizeIt.Test", "TablelizeIt.Test\TablelizeIt.Test.csproj", "{C438113F-C2F7-4257-B5EF-FD1A9008E925}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2885525-BE54-40D5-A28D-C46E3FCED1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2885525-BE54-40D5-A28D-C46E3FCED1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2885525-BE54-40D5-A28D-C46E3FCED1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2885525-BE54-40D5-A28D-C46E3FCED1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C438113F-C2F7-4257-B5EF-FD1A9008E925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C438113F-C2F7-4257-B5EF-FD1A9008E925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C438113F-C2F7-4257-B5EF-FD1A9008E925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C438113F-C2F7-4257-B5EF-FD1A9008E925}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
