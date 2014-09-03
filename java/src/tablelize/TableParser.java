@@ -61,7 +61,9 @@ public class TableParser {
 				if (!tables.containsKey(tableName))
 					tables.put(tableName, new ArrayList<Table>());
 				
-				tables.get(tableName).add(loadedTable);
+//				tables.get(tableName).add(loadedTable);
+				ArrayList<Table> tab = tables.get(tableName);
+				tab.add(loadedTable);
 				tableContents = "";
 			}
 		} while (scanner.hasNextLine());

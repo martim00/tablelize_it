@@ -23,7 +23,7 @@ public class FixtureTest {
 	@Test
 	public void testShouldReadExampleFromString() throws Exception {
 		
-		SimpleFixture fixture = new SimpleFixture();
+		Fixture fixture = new SimpleFixture();
 		
 		fixture.loadData("|some|\n|column|\n|50|\n\n");
 		
@@ -35,7 +35,7 @@ public class FixtureTest {
 	@Test
 	public void testMoreThanOneTable() throws Exception {
 
-		SimpleFixture fixture = new SimpleFixture();
+		Fixture fixture = new SimpleFixture();
 		fixture.loadData("|some|\n|column|\n|50|\n\n|other table|\n|other|\n|45|\n\n");	
 		
 		Table table= fixture.getTable("some");
@@ -50,7 +50,7 @@ public class FixtureTest {
 	@Test
 	public void testGetTableShouldThrowIfThereIsMoreThanOneTableWithTheSameName() throws Exception {
 		
-	      SimpleFixture fixture = new SimpleFixture();
+	      Fixture fixture = new SimpleFixture();
 	      fixture.loadData("|TableWithArgs|someArg|\n|field1|field2|\n|1.74|73|\n\n|TableWithArgs|otherArg|\n|field1|field2|\n|474|21|\n\n");
 
 	      try {
@@ -64,7 +64,7 @@ public class FixtureTest {
 	@Test
 	public void testAsAFixtureIWantToIterateOverTablesWithSameName() throws Exception
 	{
-		SimpleFixture fixture = new SimpleFixture();
+		Fixture fixture = new SimpleFixture();
 		fixture.loadData("|TableWithArgs|someArg|\n|field1|field2|\n|1.74|73|\n\n|TableWithArgs|otherArg|\n|field1|field2|\n|474|21|\n\n");
 		
 		List<Table> tablesWithSameName = fixture.getTablesWithName("TableWithArgs");
@@ -83,7 +83,7 @@ public class FixtureTest {
 	@Test
 	public void testAsAFixtureIWantToRecoverTablesByTheArgs() throws Exception
 	{
-		SimpleFixture fixture = new SimpleFixture();
+		Fixture fixture = new SimpleFixture();
 		fixture.loadData("|TableWithArgs|someArg|\n|field1|field2|\n|1.74|73|\n\n|TableWithArgs|otherArg|\n|field1|field2|\n|474|21|\n\n");
 
 		Table tableWithArg= fixture.getTableWithArg("TableWithArgs", 0, "someArg");

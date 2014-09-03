@@ -4,24 +4,29 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Table {
+	
+	// ...
 
-	private String tableName;
 	private int positionInFile = 0;
-	private List<String> args = new ArrayList<String>();
-	private List<Row> rows = new ArrayList<Row>();
-
+	
 	public Table(String tableName) {
 		this.tableName = tableName;
 	}
-
+	
 	public void setPositionInFile(int positionInFile) {
 		this.positionInFile = positionInFile;
 	}
+	
+	// ...
 
 	public void setOriginFile(String originFile) {
 		// TODO Auto-generated method stub
 
 	}
+	
+	private String tableName;
+	private List<String> args = new ArrayList<String>();
+	private List<Row> rows = new ArrayList<Row>();
 	
 	public void pushTableArg( String arg ) {
 		args.add(arg);
@@ -39,6 +44,9 @@ public class Table {
 		return rows.size();
 	}
 
+	public int getPositionInFile() {
+		return this.positionInFile;
+	}
 	
 	/**
 	 * Returns the cell table by column and row 
@@ -52,7 +60,8 @@ public class Table {
 		if (row >= this.rows.size() || row < 0)
 			throw new Exception("the row index passed is out of range"); // TODO: create exception for this
 		
-		return this.rows.get(row).getFieldValue(column);
+		Row rowAt = this.rows.get(row);
+		return rowAt.getFieldValue(column);
 	}
 	
 	public String getTableArgAt(int argIndex) throws Exception {
@@ -62,9 +71,13 @@ public class Table {
 	}
 
 	public int fieldsCount() {
-		if (rows.isEmpty()) 
+		if (rows.isEmpty()) { 
 			return 0;
-		else return rows.get(0).getFieldsCount();
+		}
+		else {
+			Row row = rows.get(0);
+			return row.getFieldsCount();
+		}
 	}
 
 }
