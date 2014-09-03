@@ -7,7 +7,7 @@
 	<property name="classes.dir" value="${build.dir}/classes"/>
 	<property name="jar.dir"     value="${build.dir}/jar"/>
 	<property name="lib.dir" value="lib"/>
-	<property name="test.dir" value="src/test"/>
+	<property name="test.dir" value="src"/>
 
 	<path id="classpath">
 		<fileset dir="${lib.dir}" includes="**/*.jar"/>
@@ -43,7 +43,7 @@
 			<classpath> 
 				<path refid="classpath"/>
 				<path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
-				<path location="${classes.dir}/test"/>
+				<path location="${classes.dir}"/>
 			</classpath>
 			
 
